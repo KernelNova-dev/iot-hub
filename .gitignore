@@ -1,0 +1,56 @@
+# Build artifacts
+build/
+dist/
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+
+# Meson build directory
+builddir/
+.meson*
+
+# Conan package manager
+conaninfo.txt
+conandatapy.txt
+graph_info.json
+conan_meson_native.ini
+conan_meson_toolchain.ini
+.conan2/
+
+# Python cache (from conanfile.py)
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+*.sublime-project
+*.sublime-workspace
+
+# CMake (if used)
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+
+# Backup and temporary files
+*.bak
+*.tmp
+*.[oa]
+
+# OS-specific
+.directory
+.nautilus-metafile.xml
