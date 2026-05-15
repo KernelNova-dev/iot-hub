@@ -1,10 +1,6 @@
-src_files = files(
-  'main.cpp'
-)
 
-executable(
-  'iot-hub',
-  src_files,
-  #dependencies: conan_deps,
-  install: true
-)
+subdir('core')    # Core library with common functionality
+subdir('ipc')     # Inter-process communication components
+
+subdir('service') # This is the main service implementation
+subdir('cli')     # Command-line interface for interacting with the service

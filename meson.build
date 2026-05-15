@@ -8,5 +8,10 @@ project(
   ]
 )
 
+asio_dep = dependency('asio')
+json_dep = dependency('nlohmann_json')
+spdlog_dep = dependency('spdlog')
+cli11_dep = dependency('CLI11')
+
 subdir('src')
 #subdir('tests')
