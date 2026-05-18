@@ -1,0 +1,129 @@
+<!--
+SPDX-FileCopyrightText: 2026 Daryna Vasylchenko (KernelNova) <daryna.vasylchenko@gmail.com>
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="1350" height="820" viewBox="0 0 1350 820" role="img" aria-labelledby="title desc">
+  <title id="title">WireGate concept class diagram</title>
+  <desc id="desc">Compact conceptual class diagram for WireGate service, modules, shared context, device manager, and IPC server.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="inherit" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto">
+      <path d="M 10 6 L 1 1 L 1 11 z" fill="#ffffff" stroke="#475569" stroke-width="1.4"/>
+    </marker>
+    <marker id="diamond" viewBox="0 0 12 12" refX="1" refY="6" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M 1 6 L 6 1 L 11 6 L 6 11 z" fill="#ffffff" stroke="#475569" stroke-width="1.4"/>
+    </marker>
+    <style>
+      .page { fill: #f8fafc; }
+      .title { font: 700 28px Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 14px Arial, sans-serif; fill: #64748b; }
+      .box { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; rx: 10; }
+      .blue { fill: #e0f2fe; }
+      .green { fill: #dcfce7; }
+      .amber { fill: #fef3c7; }
+      .purple { fill: #f3e8ff; }
+      .name { font: 700 16px Arial, sans-serif; fill: #0f172a; }
+      .kind { font: italic 12px Arial, sans-serif; fill: #64748b; }
+      .mono { font: 400 12px Consolas, Monaco, monospace; fill: #334155; }
+      .dep { fill: none; stroke: #475569; stroke-width: 1.7; marker-end: url(#arrow); }
+      .inherit { fill: none; stroke: #475569; stroke-width: 1.7; marker-end: url(#inherit); }
+      .own { fill: none; stroke: #475569; stroke-width: 1.7; marker-start: url(#diamond); marker-end: url(#arrow); }
+      .label-bg { fill: #f8fafc; opacity: 0.96; }
+      .label { font: 700 11px Arial, sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <rect class="page" width="1350" height="820"/>
+  <text class="title" x="56" y="54">WireGate concept class diagram</text>
+  <text class="subtitle" x="56" y="80">A compact view of orchestration, modules, shared context, and device state access.</text>
+
+  <g transform="translate(70 160)">
+    <rect class="box blue" width="270" height="126"/>
+    <text class="name" x="20" y="30">WireGateService</text>
+    <text class="mono" x="20" y="62">+ installModule(...)</text>
+    <text class="mono" x="20" y="82">+ startMainLoop(...)</text>
+    <text class="mono" x="20" y="102">+ shutdown()</text>
+    <text class="mono" x="20" y="122">- mainLoop()</text>
+  </g>
+
+  <g transform="translate(505 90)">
+    <rect class="box amber" width="260" height="126"/>
+    <text class="name" x="20" y="30">ServiceModule</text>
+    <text class="kind" x="20" y="52">&lt;&lt;interface&gt;&gt;</text>
+    <text class="mono" x="20" y="78">+ initialize(...)</text>
+    <text class="mono" x="20" y="98">+ start(context)</text>
+    <text class="mono" x="20" y="118">+ execute(context)</text>
+  </g>
+
+  <g transform="translate(505 340)">
+    <rect class="box green" width="260" height="92"/>
+    <text class="name" x="20" y="30">ServiceContext</text>
+    <text class="mono" x="20" y="62">+ settings</text>
+    <text class="mono" x="20" y="82">+ deviceManager</text>
+  </g>
+
+  <g transform="translate(505 590)">
+    <rect class="box green" width="260" height="110"/>
+    <text class="name" x="20" y="30">DeviceManager</text>
+    <text class="kind" x="20" y="52">&lt;&lt;interface&gt;&gt;</text>
+    <text class="mono" x="20" y="78">+ list(), find(id)</text>
+    <text class="mono" x="20" y="98">+ sendCommand(...)</text>
+  </g>
+
+  <g transform="translate(955 80)">
+    <rect class="box amber" width="250" height="82"/>
+    <text class="name" x="20" y="32">IpcServiceModule</text>
+    <text class="mono" x="20" y="60">+ handleRequest(...)</text>
+  </g>
+
+  <g transform="translate(955 245)">
+    <rect class="box amber" width="250" height="82"/>
+    <text class="name" x="20" y="32">DevicePoolModule</text>
+    <text class="mono" x="20" y="60">+ execute(context)</text>
+  </g>
+
+  <g transform="translate(955 410)">
+    <rect class="box purple" width="250" height="96"/>
+    <text class="name" x="20" y="32">IpcServer</text>
+    <text class="mono" x="20" y="64">+ start(), stop()</text>
+    <text class="mono" x="20" y="84">+ setHandler(...)</text>
+  </g>
+
+  <g transform="translate(955 610)">
+    <rect class="box green" width="250" height="110"/>
+    <text class="name" x="20" y="30">DeviceRegistry</text>
+    <text class="mono" x="20" y="62">+ updateOrInsert(...)</text>
+    <text class="mono" x="20" y="82">+ updateTelemetry(...)</text>
+    <text class="mono" x="20" y="102">+ setStatus(...)</text>
+  </g>
+
+  <path class="own" d="M340 202 C400 180 445 162 505 153"/>
+  <rect class="label-bg" x="394" y="158" width="52" height="16"/>
+  <text class="label" x="400" y="170">modules</text>
+
+  <path class="dep" d="M340 248 C420 300 455 348 505 386"/>
+  <rect class="label-bg" x="405" y="318" width="50" height="16"/>
+  <text class="label" x="411" y="330">creates</text>
+
+  <path class="dep" d="M635 432 C635 495 635 535 635 590"/>
+  <rect class="label-bg" x="650" y="505" width="55" height="16"/>
+  <text class="label" x="656" y="517">exposes</text>
+
+  <path class="inherit" d="M955 121 C880 123 835 130 765 153"/>
+  <path class="inherit" d="M955 286 C850 275 810 215 765 174"/>
+  <path class="inherit" d="M955 665 C870 666 825 666 765 655"/>
+
+  <path class="dep" d="M1205 121 C1290 170 1290 380 1205 458"/>
+  <rect class="label-bg" x="1266" y="282" width="34" height="16"/>
+  <text class="label" x="1272" y="294">owns</text>
+
+  <path class="dep" d="M1000 162 C870 240 825 470 765 625"/>
+  <rect class="label-bg" x="815" y="440" width="32" height="16"/>
+  <text class="label" x="821" y="452">uses</text>
+
+  <path class="dep" d="M1000 327 C875 390 825 535 765 645"/>
+  <rect class="label-bg" x="825" y="514" width="52" height="16"/>
+  <text class="label" x="831" y="526">updates</text>
+</svg>

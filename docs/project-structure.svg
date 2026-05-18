@@ -1,6 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Daryna Vasylchenko (KernelNova) <daryna.vasylchenko@gmail.com>
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
 <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="980" viewBox="0 0 1440 980" role="img" aria-labelledby="title desc">
-  <title id="title">IoT Hub project structure and build flow</title>
-  <desc id="desc">A simple diagram showing how Git, tools/build.sh, Conan, and Meson interact to build the IoT Hub C++ project.</desc>
+  <title id="title">WireGate project structure and build flow</title>
+  <desc id="desc">A simple diagram showing how Git, tools/build.sh, Conan, and Meson interact to build the WireGate C++ project.</desc>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
       <path d="M 0 0 L 10 5 L 0 10 z" fill="#526176"/>
@@ -34,7 +38,7 @@
 
   <rect class="page" x="0" y="0" width="1440" height="980"/>
 
-  <text class="title" x="60" y="58">IoT Hub project structure and build flow</text>
+  <text class="title" x="60" y="58">WireGate project structure and build flow</text>
   <text class="subtitle" x="60" y="84">Git stores the working tree; the build script orchestrates Conan dependency setup and Meson/Ninja compilation.</text>
 
   <!-- Git / repository structure -->
@@ -93,7 +97,7 @@
     <text class="section-title" x="844" y="232">Requirements</text>
     <text class="text" x="844" y="260">asio</text>
     <text class="text" x="844" y="286">nlohmann_json</text>
-    <text class="text" x="844" y="312">spdlog, fmt, CLI11</text>
+    <text class="text" x="844" y="312">spdlog, CLI11</text>
     <text class="muted" x="844" y="338">Resolved with profile.default</text>
 
     <rect class="mini" x="1090" y="205" width="246" height="145"/>
@@ -122,14 +126,13 @@
 
     <rect class="mini" x="1090" y="535" width="246" height="220"/>
     <text class="section-title" x="1110" y="562">Targets</text>
-    <text class="code" x="1110" y="590">iot-hub-core</text>
+    <text class="code" x="1110" y="590">wiregate-core</text>
     <text class="text" x="1230" y="590">uses spdlog</text>
     <text class="code" x="1110" y="616">ipc</text>
     <text class="text" x="1152" y="616">uses asio + json</text>
-    <text class="code" x="1110" y="642">iot-hub-service-lib</text>
+    <text class="code" x="1110" y="642">wiregate-service</text>
     <text class="text" x="1110" y="668">links core + ipc + json</text>
-    <text class="code" x="1110" y="700">iot-hub-service</text>
-    <text class="text" x="1110" y="726">final executable</text>
+    <text class="text" x="1110" y="700">final executable</text>
   </g>
 
   <!-- Output -->

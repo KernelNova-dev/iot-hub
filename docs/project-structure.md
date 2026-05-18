@@ -1,6 +1,11 @@
+<!--
+SPDX-FileCopyrightText: 2026 Daryna Vasylchenko (KernelNova) <daryna.vasylchenko@gmail.com>
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+
 # Project Structure Visualization
 
-![IoT Hub project structure and build flow](./project-structure.svg)
+![WireGate project structure and build flow](./project-structure.svg)
 
 This diagram shows the main interaction path:
 
@@ -10,3 +15,9 @@ This diagram shows the main interaction path:
 4. Meson reads the root and module `meson.build` files, consumes Conan metadata, and builds targets under `build/meson/`.
 
 Generated build folders such as `build/` and `builddir/` are intentionally kept outside Git by `.gitignore`.
+
+## Class diagrams
+
+- [Generic entity relations](./class-diagram-entities.md)
+- [Abstraction relations](./class-diagram-abstractions.md)
+- [Concept class diagram](./class-diagram-concept.md)

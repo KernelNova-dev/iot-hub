@@ -1,0 +1,170 @@
+<!--
+SPDX-FileCopyrightText: 2026 Daryna Vasylchenko (KernelNova) <daryna.vasylchenko@gmail.com>
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="900" viewBox="0 0 1500 900" role="img" aria-labelledby="title desc">
+  <title id="title">WireGate generic entity relations</title>
+  <desc id="desc">Runtime relationships between WireGate service, modules, IPC infrastructure, and device model.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="inherit" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto">
+      <path d="M 10 6 L 1 1 L 1 11 z" fill="#ffffff" stroke="#475569" stroke-width="1.4"/>
+    </marker>
+    <marker id="diamond" viewBox="0 0 12 12" refX="1" refY="6" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M 1 6 L 6 1 L 11 6 L 6 11 z" fill="#ffffff" stroke="#475569" stroke-width="1.4"/>
+    </marker>
+    <style>
+      .page { fill: #f8fafc; }
+      .title { font: 700 28px Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 14px Arial, sans-serif; fill: #64748b; }
+      .box { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; rx: 10; }
+      .blue { fill: #e0f2fe; }
+      .green { fill: #dcfce7; }
+      .amber { fill: #fef3c7; }
+      .purple { fill: #f3e8ff; }
+      .name { font: 700 15px Arial, sans-serif; fill: #0f172a; }
+      .text { font: 400 12.5px Arial, sans-serif; fill: #334155; }
+      .mono { font: 400 12px Consolas, Monaco, monospace; fill: #334155; }
+      .line { fill: none; stroke: #475569; stroke-width: 1.7; marker-end: url(#arrow); }
+      .inherit { fill: none; stroke: #475569; stroke-width: 1.7; marker-end: url(#inherit); }
+      .own { fill: none; stroke: #475569; stroke-width: 1.7; marker-start: url(#diamond); marker-end: url(#arrow); }
+      .label-bg { fill: #f8fafc; opacity: 0.96; }
+      .label { font: 700 11px Arial, sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <rect class="page" width="1500" height="900"/>
+  <text class="title" x="56" y="54">WireGate generic entity relations</text>
+  <text class="subtitle" x="56" y="80">Runtime ownership and communication between service, modules, IPC, and devices.</text>
+
+  <g transform="translate(60 120)">
+    <rect class="box green" width="240" height="92"/>
+    <text class="name" x="18" y="28">ServiceSettings</text>
+    <text class="mono" x="18" y="58">ipcSocketPath</text>
+    <text class="mono" x="18" y="78">serviceIdleTimeout</text>
+  </g>
+
+  <g transform="translate(60 315)">
+    <rect class="box blue" width="260" height="122"/>
+    <text class="name" x="18" y="28">WireGateService</text>
+    <text class="text" x="18" y="58">owns lifecycle</text>
+    <text class="text" x="18" y="80">owns modules</text>
+    <text class="text" x="18" y="102">creates runtime context</text>
+  </g>
+
+  <g transform="translate(60 585)">
+    <rect class="box green" width="260" height="88"/>
+    <text class="name" x="18" y="28">ServiceContext</text>
+    <text class="mono" x="18" y="58">ServiceSettings*</text>
+    <text class="mono" x="18" y="76">DeviceManager</text>
+  </g>
+
+  <g transform="translate(420 310)">
+    <rect class="box amber" width="270" height="136"/>
+    <text class="name" x="18" y="28">ServiceModule</text>
+    <text class="mono" x="18" y="60">initialize(settings)</text>
+    <text class="mono" x="18" y="82">start(context)</text>
+    <text class="mono" x="18" y="104">execute(context)</text>
+    <text class="mono" x="18" y="126">shutdown()</text>
+  </g>
+
+  <g transform="translate(780 150)">
+    <rect class="box amber" width="240" height="82"/>
+    <text class="name" x="18" y="30">IpcServiceModule</text>
+    <text class="text" x="18" y="62">handles IPC requests</text>
+  </g>
+
+  <g transform="translate(780 535)">
+    <rect class="box amber" width="240" height="82"/>
+    <text class="name" x="18" y="30">DevicePoolModule</text>
+    <text class="text" x="18" y="62">updates device data</text>
+  </g>
+
+  <g transform="translate(1120 120)">
+    <rect class="box purple" width="240" height="96"/>
+    <text class="name" x="18" y="30">IpcServer</text>
+    <text class="text" x="18" y="62">local socket server</text>
+    <text class="text" x="18" y="82">dispatches requests</text>
+  </g>
+
+  <g transform="translate(1120 285)">
+    <rect class="box purple" width="240" height="72"/>
+    <text class="name" x="18" y="28">IpcRequest</text>
+    <text class="mono" x="18" y="56">type, deviceId, command</text>
+  </g>
+
+  <g transform="translate(1120 405)">
+    <rect class="box purple" width="240" height="72"/>
+    <text class="name" x="18" y="28">IpcResponse</text>
+    <text class="mono" x="18" y="56">ok, payload, message</text>
+  </g>
+
+  <g transform="translate(1120 535)">
+    <rect class="box green" width="240" height="110"/>
+    <text class="name" x="18" y="30">DeviceManager</text>
+    <text class="mono" x="18" y="62">list()</text>
+    <text class="mono" x="18" y="82">find(id)</text>
+    <text class="mono" x="18" y="102">sendCommand(...)</text>
+  </g>
+
+  <g transform="translate(1120 740)">
+    <rect class="box green" width="240" height="82"/>
+    <text class="name" x="18" y="30">DeviceRegistry</text>
+    <text class="text" x="18" y="62">stores device state</text>
+  </g>
+
+  <g transform="translate(780 730)">
+    <rect class="box green" width="240" height="128"/>
+    <text class="name" x="18" y="30">DeviceInfo</text>
+    <text class="mono" x="18" y="62">id, name, type</text>
+    <text class="mono" x="18" y="82">status</text>
+    <text class="mono" x="18" y="102">telemetry</text>
+    <text class="mono" x="18" y="122">lastCommand</text>
+  </g>
+
+  <path class="line" d="M190 315 C190 280 190 246 190 212"/>
+  <rect class="label-bg" x="205" y="255" width="35" height="16"/>
+  <text class="label" x="210" y="267">uses</text>
+
+  <path class="line" d="M190 437 C190 488 190 535 190 585"/>
+  <rect class="label-bg" x="205" y="507" width="52" height="16"/>
+  <text class="label" x="210" y="519">creates</text>
+
+  <path class="own" d="M320 376 C350 376 385 376 420 376"/>
+  <rect class="label-bg" x="352" y="355" width="38" height="16"/>
+  <text class="label" x="358" y="367">owns</text>
+
+  <path class="inherit" d="M780 192 C735 204 714 250 690 335"/>
+  <path class="inherit" d="M780 576 C735 556 714 497 690 421"/>
+
+  <path class="line" d="M1020 191 C1052 184 1085 176 1120 168"/>
+  <rect class="label-bg" x="1050" y="157" width="34" height="16"/>
+  <text class="label" x="1056" y="169">owns</text>
+
+  <path class="line" d="M1360 168 C1410 190 1410 278 1360 321"/>
+  <rect class="label-bg" x="1378" y="240" width="54" height="16"/>
+  <text class="label" x="1384" y="252">receives</text>
+
+  <path class="line" d="M1360 176 C1440 225 1440 382 1360 441"/>
+  <rect class="label-bg" x="1402" y="310" width="45" height="16"/>
+  <text class="label" x="1408" y="322">returns</text>
+
+  <path class="line" d="M320 629 C585 650 858 650 1120 590"/>
+  <rect class="label-bg" x="610" y="626" width="56" height="16"/>
+  <text class="label" x="616" y="638">exposes</text>
+
+  <path class="line" d="M1020 203 C1095 270 1085 450 1120 560"/>
+  <rect class="label-bg" x="1045" y="385" width="125" height="16"/>
+  <text class="label" x="1052" y="397">queries / commands</text>
+
+  <path class="line" d="M1020 576 C1052 576 1085 582 1120 590"/>
+  <rect class="label-bg" x="1048" y="555" width="52" height="16"/>
+  <text class="label" x="1054" y="567">updates</text>
+
+  <path class="inherit" d="M1240 740 C1240 705 1240 680 1240 645"/>
+  <path class="own" d="M1120 781 C1085 786 1054 790 1020 794"/>
+  <rect class="label-bg" x="1050" y="767" width="43" height="16"/>
+  <text class="label" x="1056" y="779">stores</text>
+</svg>
