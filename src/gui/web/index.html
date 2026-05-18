@@ -1,0 +1,109 @@
+<!doctype html>
+<!--
+SPDX-FileCopyrightText: 2026 Daryna Vasylchenko (KernelNova) <daryna.vasylchenko@gmail.com>
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WireGate Control</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">WireGate</p>
+          <h1>Control</h1>
+        </div>
+        <div class="topbar__actions">
+          <span id="connection-status" class="status-pill status-pill--muted">Connecting</span>
+          <button id="refresh-button" class="button button--primary">Refresh</button>
+        </div>
+      </header>
+
+      <section class="metrics" aria-label="System overview">
+        <article class="metric">
+          <span class="metric__label">Service</span>
+          <strong id="service-state">-</strong>
+        </article>
+        <article class="metric">
+          <span class="metric__label">Devices</span>
+          <strong id="device-count">-</strong>
+        </article>
+        <article class="metric">
+          <span class="metric__label">Attention</span>
+          <strong id="attention-count">-</strong>
+        </article>
+        <article class="metric">
+          <span class="metric__label">Last update</span>
+          <strong id="last-update">-</strong>
+        </article>
+      </section>
+
+      <section class="layout">
+        <section class="panel panel--main">
+          <div class="panel__header">
+            <div>
+              <h2>Devices</h2>
+              <p>Live state reported by the service device registry.</p>
+            </div>
+            <div class="filters">
+              <select id="type-filter" aria-label="Filter by type">
+                <option value="">All types</option>
+              </select>
+              <select id="status-filter" aria-label="Filter by status">
+                <option value="">All statuses</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Device</th>
+                  <th>Type</th>
+                  <th>Location</th>
+                  <th>Status</th>
+                  <th>Telemetry</th>
+                </tr>
+              </thead>
+              <tbody id="device-table"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <aside class="panel detail">
+          <div class="detail__empty" id="empty-detail">
+            <span>◇</span>
+            <p>Select a device to inspect telemetry and actions.</p>
+          </div>
+
+          <div id="device-detail" class="detail__content is-hidden">
+            <div class="detail__header">
+              <div>
+                <h2 id="detail-name">-</h2>
+                <p id="detail-meta">-</p>
+              </div>
+              <span id="detail-status" class="status-pill">-</span>
+            </div>
+
+            <h3>Telemetry</h3>
+            <dl id="telemetry-list" class="kv-list"></dl>
+
+            <h3>Settings</h3>
+            <dl id="settings-list" class="kv-list"></dl>
+
+            <h3>Commands</h3>
+            <div id="command-list" class="command-list"></div>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="/assets/app.js"></script>
+  </body>
+</html>
