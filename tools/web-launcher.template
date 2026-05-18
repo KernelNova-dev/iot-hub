@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# SPDX-FileCopyrightText: 2026 Daryna Vasylchenko (KernelNova) <daryna.vasylchenko@gmail.com>
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+
+set -euo pipefail
+
+APP_HOME="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
+
+export LD_LIBRARY_PATH="$APP_HOME/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+exec "$APP_HOME/bin/wiregate-gui" "$APP_HOME/config/wiregate-web.json"

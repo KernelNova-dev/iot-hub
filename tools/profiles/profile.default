@@ -1,11 +1,18 @@
+# SPDX-FileCopyrightText: 2026 Daryna Vasylchenko (KernelNova) <daryna.vasylchenko@gmail.com>
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 [settings]
 os=Linux
 arch=x86_64
 build_type=Release
 compiler=clang
 compiler.version=20
-compiler.cppstd=23
+compiler.cppstd=20
 compiler.libcxx=libstdc++11
+
+[options]
+spdlog/*:header_only=True
+spdlog/*:use_std_fmt=True
 
 [conf]
 tools.build:compiler_executables={"c":"clang-20","cpp":"clang++-20"}
