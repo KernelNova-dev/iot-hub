@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Daryna Vasylchenko (KernelNova) <daryna.vasylchenko@gmail.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 #pragma once
 
 #include <memory>
@@ -7,7 +10,7 @@ namespace spdlog {
 class logger;
 } // namespace spdlog
 
-namespace core {
+namespace wiregate::core {
 
 enum class LogLevel {
   trace,
@@ -35,4 +38,4 @@ private:
   std::shared_ptr<spdlog::logger> logger_;
 };
 
-} // namespace core
+} // namespace wiregate::core

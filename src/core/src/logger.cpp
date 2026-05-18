@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Daryna Vasylchenko (KernelNova) <daryna.vasylchenko@gmail.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 #include "logger.h"
 
 #include <spdlog/sinks/stdout_color_sinks.h>
@@ -6,7 +9,7 @@
 #include <string>
 #include <utility>
 
-namespace core {
+namespace wiregate::core {
 
 namespace {
 
@@ -71,4 +74,4 @@ void Logger::critical(std::string_view message) const {
   logger_->critical("{}", message);
 }
 
-} // namespace core
+} // namespace wiregate::core

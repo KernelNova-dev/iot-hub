@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Daryna Vasylchenko (KernelNova) <daryna.vasylchenko@gmail.com>
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 core_inc = include_directories('include')
 
 
@@ -6,7 +9,7 @@ core_sources = files(
 )
 
 core_lib = shared_library(
-  'iot-hub-core',
+  'wiregate-core',
   core_sources,
   include_directories : core_inc,
   dependencies : [spdlog_dep],
