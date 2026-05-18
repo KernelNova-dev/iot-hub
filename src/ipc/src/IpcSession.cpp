@@ -1,9 +1,12 @@
+// SPDX-FileCopyrightText: 2026 Daryna Vasylchenko (KernelNova) <daryna.vasylchenko@gmail.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 #include "IpcSession.h"
 
 #include <iostream>
 #include <stdexcept>
 
-namespace iothub::ipc {
+namespace wiregate::ipc {
 
 IpcSession::IpcSession(Socket socket, RequestHandler handler)
     : socket_(std::move(socket)),
@@ -77,4 +80,4 @@ void IpcSession::writeResponse(const IpcResponse& response) {
     );
 }
 
-} // namespace iothub::ipc
+} // namespace wiregate::ipc

@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Daryna Vasylchenko (KernelNova) <daryna.vasylchenko@gmail.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 #pragma once
 
 #include "IpcMessage.h"
@@ -10,7 +13,7 @@
 #include <string>
 #include <vector>
 
-namespace iothub::ipc {
+namespace wiregate::ipc {
 
 class IpcSession : public std::enable_shared_from_this<IpcSession> {
 public:
@@ -35,4 +38,4 @@ private:
     std::vector<std::uint8_t> writeBuffer_;
 };
 
-} // namespace iothub::ipc
+} // namespace wiregate::ipc

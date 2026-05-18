@@ -1,8 +1,11 @@
+// SPDX-FileCopyrightText: 2026 Daryna Vasylchenko (KernelNova) <daryna.vasylchenko@gmail.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 #include "IpcProtocol.h"
 
 #include <stdexcept>
 
-namespace iothub::ipc {
+namespace wiregate::ipc {
 
 std::array<std::uint8_t, ipcHeaderSize> encodeLength(std::uint32_t value) {
     return {
@@ -39,4 +42,4 @@ std::vector<std::uint8_t> makeFrame(std::string_view message) {
     return frame;
 }
 
-} // namespace iothub::ipc
+} // namespace wiregate::ipc

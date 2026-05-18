@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Daryna Vasylchenko (KernelNova) <daryna.vasylchenko@gmail.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 #pragma once
 
 #include "IpcMessage.h"
@@ -10,10 +13,11 @@
 #include <string>
 #include <thread>
 
-namespace iothub::ipc {
+namespace wiregate::ipc {
 
 class IpcServer {
 public:
+    using Ptr = std::shared_ptr<IpcServer>;
     using RequestHandler = std::function<IpcResponse(const IpcRequest& request)>;
 
     explicit IpcServer(std::string socketPath);
@@ -42,4 +46,4 @@ private:
     RequestHandler handler_;
 };
 
-} // namespace iothub::ipc
+} // namespace wiregate::ipc

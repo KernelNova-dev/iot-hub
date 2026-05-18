@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Daryna Vasylchenko (KernelNova) <daryna.vasylchenko@gmail.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 #pragma once
 
 #include <nlohmann/json.hpp>
@@ -6,7 +9,7 @@
 #include <string>
 #include <string_view>
 
-namespace iothub::ipc {
+namespace wiregate::ipc {
 
 struct IpcRequest {
     std::string type;
@@ -29,4 +32,4 @@ struct IpcResponse {
     [[nodiscard]] static IpcResponse error(std::string message);
 };
 
-} // namespace iothub::ipc
+} // namespace wiregate::ipc

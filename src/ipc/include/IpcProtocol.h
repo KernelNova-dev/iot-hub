@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Daryna Vasylchenko (KernelNova) <daryna.vasylchenko@gmail.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 #pragma once
 
 #include <array>
@@ -6,7 +9,7 @@
 #include <string_view>
 #include <vector>
 
-namespace iothub::ipc {
+namespace wiregate::ipc {
 
 inline constexpr std::uint32_t maxIpcMessageSize = 1024 * 1024;
 inline constexpr std::size_t ipcHeaderSize = 4;
@@ -16,4 +19,4 @@ inline constexpr std::size_t ipcHeaderSize = 4;
 [[nodiscard]] bool isValidMessageSize(std::uint32_t size);
 [[nodiscard]] std::vector<std::uint8_t> makeFrame(std::string_view message);
 
-} // namespace iothub::ipc
+} // namespace wiregate::ipc

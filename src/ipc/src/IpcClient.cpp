@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Daryna Vasylchenko (KernelNova) <daryna.vasylchenko@gmail.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 #include "IpcClient.h"
 #include "IpcProtocol.h"
 
@@ -8,7 +11,7 @@
 #include <system_error>
 #include <vector>
 
-namespace iothub::ipc {
+namespace wiregate::ipc {
 
 IpcClient::IpcClient(std::string socketPath, std::chrono::milliseconds requestTimeout)
     : socketPath_(std::move(socketPath)),
@@ -154,4 +157,4 @@ IpcResponse IpcClient::request(const IpcRequest& request) {
     return std::move(*response);
 }
 
-} // namespace iothub::ipc
+} // namespace wiregate::ipc

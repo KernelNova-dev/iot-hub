@@ -1,10 +1,13 @@
+// SPDX-FileCopyrightText: 2026 Daryna Vasylchenko (KernelNova) <daryna.vasylchenko@gmail.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 #include "IpcServer.h"
 #include "IpcSession.h"
 
 #include <filesystem>
 #include <iostream>
 
-namespace iothub::ipc {
+namespace wiregate::ipc {
 
 namespace {
 
@@ -151,4 +154,4 @@ void IpcServer::asyncAccept() {
     );
 }
 
-} // namespace iothub::ipc
+} // namespace wiregate::ipc

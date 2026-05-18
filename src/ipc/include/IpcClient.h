@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Daryna Vasylchenko (KernelNova) <daryna.vasylchenko@gmail.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 #pragma once
 
 #include "IpcMessage.h"
@@ -7,7 +10,7 @@
 #include <chrono>
 #include <string>
 
-namespace iothub::ipc {
+namespace wiregate::ipc {
 
 class IpcClient {
 public:
@@ -23,4 +26,4 @@ private:
     std::chrono::milliseconds requestTimeout_;
 };
 
-} // namespace iothub::ipc
+} // namespace wiregate::ipc
