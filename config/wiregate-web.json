@@ -1,0 +1,7 @@
+{
+  "appTitle": "WireGate Control",
+  "bindAddress": "127.0.0.1",
+  "port": 8080,
+  "ipcSocketPath": "/tmp/wiregate-service.sock",
+  "staticRoot": "web"
+}

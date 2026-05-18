@@ -1,0 +1,4 @@
+{
+  "ipcSocketPath": "/tmp/wiregate-service.sock",
+  "serviceIdleTimeout": 1000
+}
