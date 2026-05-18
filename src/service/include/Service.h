@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Daryna Vasylchenko (KernelNova) <daryna.vasylchenko@gmail.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 #pragma once
 
 #include <atomic>
@@ -6,7 +9,9 @@
 #include <memory>
 #include <vector>
 
-namespace iothub {
+#include "Device.h"
+
+namespace wiregate {
 
 // ############################################################
 // ServiceSettings struct
@@ -19,6 +24,14 @@ struct ServiceSettings {
 ServiceSettings loadServiceSettings(const std::string& configFilePath);
 
 // ############################################################
+// ServiceContext
+
+struct ServiceContext {
+    const ServiceSettings* serviceSettings{nullptr};
+    DeviceManager::Ptr deviceManager;
+};
+
+// ############################################################
 // ServiceModule class
 
 class ServiceModule {
@@ -26,31 +39,22 @@ public:
     using Ptr = std::shared_ptr<ServiceModule>;
 
     virtual ~ServiceModule() = default; 
-    virtual void initialize() = 0;
-    virtual void execute() = 0;
+    virtual void initialize(const ServiceSettings& settings) = 0;
+    virtual void start(const ServiceContext&) {}
+    virtual void execute(const ServiceContext&) {}
     virtual void shutdown() = 0;
 };
 
-
 // ############################################################
-// Service class
+// Service abstract interface
 
 class Service {
 public:
-    Service(const ServiceSettings& settings);
-    ~Service();
+    virtual ~Service() = default;
 
-    void start();
-    void stop();
-
-private:
-    void mainLoop();    
-
-
-private:
-    ServiceSettings settings;
-    std::vector<ServiceModule::Ptr> modules;
-    std::atomic_bool running; 
+    virtual bool installModule(ServiceModule::Ptr module) = 0;
+    virtual bool startMainLoop(const ServiceSettings& settings) = 0;
+    virtual void shutdown() = 0;
 };
 
-} // namespace iothub
+} // namespace wiregate

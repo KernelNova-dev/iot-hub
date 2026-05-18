@@ -1,25 +1,23 @@
+# SPDX-FileCopyrightText: 2026 Daryna Vasylchenko (KernelNova) <daryna.vasylchenko@gmail.com>
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 service_inc = include_directories('include')
+
 service_sources = files(
-  'src/Service.cpp'
+  'src/Device.cpp',
+  'src/DeviceRegistry.cpp',
+  'src/DevicePoolModule.cpp',
+  'src/IpcServiceModule.cpp',
+  'src/Service.cpp',
+  'src/WireGateService.cpp',
+  'src/main.cpp'
 )
 
-service_lib = shared_library(
-  'iot-hub-service-lib',
-  service_sources,
-  include_directories : service_inc,
-  dependencies : [core_dep, ipc_dep, json_dep],
-  install : false
-)
-
-service_dep = declare_dependency(
-  link_with : service_lib,
-  include_directories : service_inc,
-  dependencies : [core_dep, ipc_dep, json_dep]
-)
+service_dep = [core_dep, ipc_dep, json_dep]
 
 executable(
-  'iot-hub-service',
-  'src/main.cpp',
+  'wiregate-service',
+  service_sources,
   include_directories : service_inc,
   dependencies : [service_dep],
   install : false
